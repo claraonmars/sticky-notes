@@ -2,6 +2,34 @@ html, body{
 	margin:0;
 }
 
+:focus{
+	outline: none;
+}
+
+/* Reset std button*/
+button{
+	border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
 .note{
 	width:20vw;
 	height:20vw;
@@ -40,6 +68,15 @@ html, body{
 	display:inline-block;
 }
 
+.add{
+	border:1px solid black;
+	font-size: 1.5rem;
+	font-weight: 700;
+	width:20vw;
+	margin:10px;
+	background-color: white;
+}
+
 .delete{
 	background-color: rgba(0,0,0,0);
 	border:none;
@@ -51,3 +88,25 @@ html, body{
 	font-weight: 400;
 	z-index:+2;
 }
+
+.navbar{
+	margin:10px;
+}
+
+.search{
+	float:right;
+	right:0;
+	position: relative;
+	display: block;
+}
+
+.search_input, .title{
+	font-size: 1.5rem;
+	font-family: sans-serif;
+}
+
+.create{
+	vertical-align: top;
+	width:20vw;
+}
+
