@@ -14,7 +14,7 @@
 
 ### Getting started
 
-Launch the app on https://clarakoh.com/sticky-notes/index.html
+Launch the app on https://clarakoh.com/sticky-notes
 
 or
 
