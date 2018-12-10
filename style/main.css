@@ -70,6 +70,7 @@ button{
 
 .container{
 	display:inline;
+	margin:0 auto;
 }
 
 .add{
@@ -119,7 +120,6 @@ button{
 }
 
 .clear_cache{
-	border:1px solid black;
 	width:50px;
 	height:50px;
 	border-radius: 100px;
@@ -130,6 +130,10 @@ button{
 	position: absolute;
 	bottom:0;
 	right:0;
+}
+
+img{
+	height:80%;
 }
 
 @media only screen and (min-width:481px) and (max-width: 1024px){
@@ -168,6 +172,7 @@ button{
 		bottom:0;
 		left:0;
 		background-color: rgba(0,0,0,0);
+		z-index: +99;
 	}
 
 	.title_input, .content, .search{
@@ -184,14 +189,18 @@ button{
 		bottom:70px;
 		right:30px;
 		position: absolute;
+		z-index: +99;
 		}
 
 	.clear_cache{
+		border:1px solid black;
+		z-index: +99;
 		position: fixed;
 	}
 
 	.title{
 		margin-left:10vw;
+		margin-bottom: 10px;
 		font-size:1.5rem;
 		display:block;
 	}
@@ -212,14 +221,19 @@ button{
 	.search_input{
 		border:1px solid black;
 		width:80vw;
-		padding:0;
+		padding:4px;
+		font-size: 1.1rem;
 	}
 
 	.container{
 		position: relative;
 		margin-top:10px;
-		top:20vw;
+		top:28vw;
 
+	}
+
+	img{
+		width:60%;
 	}
 
 
