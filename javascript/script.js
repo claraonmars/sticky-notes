@@ -136,9 +136,21 @@ var addNote = function() {
         'content': content
     }
     notes.push(note);
+
+    // first note to initialize delete all if doesnt already exist
+    var deleteAllBtn = document.querySelector('.clear_cache');
+    console.log(deleteAllBtn)
+    if(deleteAllBtn === null){
+        var clearCache = document.createElement('button');
+    clearCache.classList.add('clear_cache');
+    clearCache.innerText = 'Delete all';
+    var create = document.querySelector('.create');
+    create.appendChild(clearCache);
+    clearCache.addEventListener('click', deleteAll);
+    }
 }
 
-// edit note
+// edit note / save into local storage
 var editNote = function(event) {
     var selectedNoteId = event.target.id.split('_');
     var selectedNoteContent = event.target.value
@@ -150,7 +162,7 @@ var editNote = function(event) {
     saveNote();
 }
 
-// edit note title
+// edit note title / save into local storage
 var editTitle = function(event) {
     var selectedNoteId = event.target.id.split('_');
     var selectedNoteContent = event.target.value
@@ -204,7 +216,7 @@ var search = function() {
         var note = document.querySelector('#note_' + i);
 
         if (note !== null) {
-            if (notes[i].content.includes(query) || notes[i].title.includes(query)) {
+            if (notes[i].content.indexOf(query) >= 0 || notes[i].title.indexOf(query) >= 0){
                 note.style.display = 'inline-block'
             } else {
                 note.style.display = 'none'
