@@ -146,9 +146,11 @@ var addNote = function() {
     if(deleteAllBtn === null){
         var clearCache = document.createElement('button');
     clearCache.classList.add('clear_cache');
-    clearCache.innerText = 'Delete all';
-    var create = document.querySelector('.create');
-    create.appendChild(clearCache);
+    var bin = document.createElement('img');
+    bin.src = 'bin.png'
+    clearCache.appendChild(bin)
+    var holder = document.querySelector('body');
+    holder.appendChild(clearCache);
     clearCache.addEventListener('click', deleteAll);
     }
 }
