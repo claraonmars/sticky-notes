@@ -3,7 +3,7 @@
 
 ### Functions
 
-* Add new notes,
+* Add new notes
 * Edit the title and content of the notes
 * Delete notes
 * Notes are saved automatically on local storage
@@ -26,9 +26,7 @@ cd sticky-notes
 
 ```
 * Open index.html in your broswer
-
 * If you are on Safari, ensure you check 'Disable Local File Restrictions' in 'Develop'.
-
 * If you are on Chrome, ensure you uncheck 'Block third party cookies' in your preferences.
 
 ### Specification
