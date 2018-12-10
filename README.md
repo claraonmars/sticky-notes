@@ -7,7 +7,7 @@
 * Edit the title and content of the notes
 * Delete notes
 * Notes are saved automatically on local storage
-* Filter notes on title using the search bar
+* Filter notes on title or content using the search bar
 * Delete history of all notes
 * Mobile friendly
 * Compatible with Chrome, Safari, IE >= 10
