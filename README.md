@@ -1,36 +1,35 @@
-# Sticky Note Application - Front-End assignment
+# Sticky Note Application 
+![picture alt](app_image.png)
 
-This page contains description and requirements for a Front-End assignment on Vanilla **Javascript**, **HTML5**, **CSS3**.
+### Functions
 
-### Duration
+* Add new notes,
+* Edit the title and content of the notes
+* Delete notes
+* Notes are saved automatically on local storage
+* Filter notes on title using the search bar
+* Delete history of all notes
+* Mobile friendly
+* Compatible with Chrome, Safari, IE >= 10
 
-This assessment duration is set to one hour and a half.
+### Getting started
 
-### Goal
+Launch the app on https://clarakoh.com/sticky-notes/index.html
 
-The goal is to check the applicant is able to:
-- Build an application from scratch using only vanilla JS, HTML and CSS and know how to use these technologies without any help from external libraries or external resources,
-- Make a responsive view,
-- Make a cross-browsers application,
-- Write clean code,
-- Use git,
-- Write short and clean documentation.
+or
 
-### Requirements
+Clone this repo into your local directory
 
-1. Create a public github repository that you will send to us.
-2. For implementation you should and can only use **Javascript**, **HTML5**, **CSS3**.
-3. Create a single page Sticky note app. The user should be able to:
-  - Edit the title and content of the notes,
-  - Add new notes,
-  - Delete notes,
-  - Save all his notes,
-  - Filter notes on title thanks to a search bar
-4. Explain in simple words how to install and run your project within your README file.
-5. Send the link of your github repository for reviewing to [tgcorbeaux@maltem.com](mailto:tgcorbeaux@maltem.com).
+```
+git clone https://github.com/claraonmars/sticky-notes.git
+cd sticky-notes
 
-##### Remarks
-Feel free to add everything you think meaningful to your application as long as the above requirements are done.
+```
+Open index.html in your broswer
+
+If you are on Safari, ensure you check 'Disable Local File Restrictions' in 'Develop'.
+
+If you are on Chrome, ensure you uncheck 'Block third party cookies' in your preferences.
 
 ### Specification
 
