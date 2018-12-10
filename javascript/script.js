@@ -11,11 +11,13 @@ var renderNote = function(){
 
     var title = document.createElement("input");
     title.classList.add('title_input');
+    title.setAttribute('id', 'title_' + notes.length);
     title.setAttribute('placeholder', 'Title');
     note.appendChild(title);
 
     var contentInput = document.createElement('textarea');
     contentInput.classList.add('content');
+    contentInput.setAttribute('id', 'content_' + notes.length);
     contentInput.setAttribute('placeholder', 'Content');
 
     note.appendChild(contentInput);
@@ -35,6 +37,19 @@ var renderNote = function(){
     for (var i = 0; i < deleteBtns.length; i++){
         deleteBtns[i].addEventListener('click', deleteNote);
     }
+
+    // edit event listener
+    var edit = document.querySelectorAll('.content');
+    for (var j = 0; j < edit.length; j++){
+        edit[j].addEventListener('keyup', editNote);
+    }
+
+    //edit title event listener
+    var editT = document.querySelectorAll('.title_input');
+    for (var k = 0; k < editT.length; k++){
+        editT[k].addEventListener('keyup', editTitle);
+    }
+
 }
 
 // add note to 'database'
@@ -48,6 +63,28 @@ var addNote = function(){
     }
 
     notes.push(note);
+}
+
+// edit note
+var editNote = function(event){
+    var selectedNoteId = event.target.id.split('_');
+    var selectedNoteContent = event.target.value
+    for (var i = 0; i<notes.length; i++){
+        if (notes[i].id === parseInt(selectedNoteId[1])){
+            notes[i].content = selectedNoteContent
+        }
+    }
+}
+
+// edit note title
+var editTitle = function(event){
+    var selectedNoteId = event.target.id.split('_');
+    var selectedNoteContent = event.target.value
+    for (var i = 0; i<notes.length; i++){
+        if (notes[i].id === parseInt(selectedNoteId[1])){
+            notes[i].title = selectedNoteContent
+        }
+    }
 }
 
 // delete note
@@ -65,4 +102,5 @@ var deleteNote = function(){
     container.removeChild(parentNode);
 }
 
+// event listener for add button
 document.querySelector('.add').addEventListener('click', renderNote);
