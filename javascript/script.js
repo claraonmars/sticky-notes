@@ -7,6 +7,7 @@ var container = document.querySelector('.container');
 var renderNote = function(){
 
     var note = document.createElement("div");
+    note.setAttribute('id', 'note_' + notes.length);
     note.classList.add("note");
 
     var title = document.createElement("input");
@@ -61,7 +62,6 @@ var addNote = function(){
         'title': title_input,
         'content': content
     }
-
     notes.push(note);
 }
 
@@ -102,5 +102,24 @@ var deleteNote = function(){
     container.removeChild(parentNode);
 }
 
+// search
+var search = function(){
+    var query = document.querySelector('.search_input').value;
+
+    for (var i = 0; i < notes.length; i++){
+        var note = document.querySelector('#note_' + i);
+        if (notes[i].content.includes(query)|| notes[i].title.includes(query)){
+            note.style.display = 'block'
+        }
+        else{
+            note.style.display = 'none'
+        }
+    }
+
+}
+
 // event listener for add button
 document.querySelector('.add').addEventListener('click', renderNote);
+//document.querySelector('.search_button').addEventListener('click', search);
+document.querySelector('.search_input').addEventListener('input', search);
+
