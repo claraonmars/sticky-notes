@@ -1,0 +1,19 @@
+.note{
+	width:20vw;
+	height:20vw;
+	background-color: #FFEC2C;
+	position: relative;
+	padding:5px;
+	display: inline-block;
+	margin:10px;
+}
+
+.title_input{
+	background-color: #FFEC2C;
+	border:0;
+}
+
+.content{
+	background-color: #FFEC2C;
+	border:0;
+}
