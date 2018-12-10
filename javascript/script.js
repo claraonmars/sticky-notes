@@ -67,6 +67,14 @@ var renderExisting = function() {
             }
         }
     }
+
+    // delete all cache / local storage
+    var clearCache = document.createElement('button');
+    clearCache.classList.add('clear_cache');
+    clearCache.innerText = 'Delete all';
+    var create = document.querySelector('.create');
+    create.appendChild(clearCache);
+    clearCache.addEventListener('click', deleteAll);
 }
 
 // render note onto container
@@ -170,6 +178,19 @@ var deleteNote = function() {
     saveNote();
 }
 
+// delete all
+var deleteAll =function(){
+    var confirm = prompt('This will remove all your saved notes! if you wish to continue, input YES');
+    if ( confirm === 'YES'){
+        localStorage.removeItem("notes");
+        location.reload();
+    }
+    else{
+        alert('Your notes are safe!')
+    }
+
+}
+
 // save note into database
 var saveNote = function() {
     localStorage.setItem('notes', JSON.stringify(notes));
@@ -184,7 +205,7 @@ var search = function() {
 
         if (note !== null) {
             if (notes[i].content.includes(query) || notes[i].title.includes(query)) {
-                note.style.display = 'block'
+                note.style.display = 'inline-block'
             } else {
                 note.style.display = 'none'
             }
