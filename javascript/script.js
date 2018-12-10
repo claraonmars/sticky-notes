@@ -1,7 +1,75 @@
-console.log('working')
 
-var notes =[];
+var notes
 var container = document.querySelector('.container');
+
+// check local storage
+var init = function(){
+    if (typeof(Storage) !== "undefined") {
+        if(window.localStorage.getItem("notes") === null || window.localStorage.getItem("notes") === undefined){
+            var newArr =[];
+            localStorage.setItem('notes', JSON.stringify(newArr));
+            notes = JSON.parse(window.localStorage.getItem('notes'));
+        }
+        else{
+            notes = JSON.parse(window.localStorage.getItem('notes'));
+            renderExisting();
+        }
+    }
+    else{
+        alert('Your browser does not support local storage, your notes will not be saved!');
+        notes = [];
+    }
+}
+
+// append existing notes from local storage
+var renderExisting = function(){
+    console.log(notes)
+    for (var i = 0; i< notes.length; i ++){
+        if (notes[i].title !== '' || notes[i].content !== ''){
+            var note = document.createElement("div");
+            note.classList.add("note");
+            note.setAttribute('id', 'note_' + i);
+
+            var title = document.createElement("input");
+            title.classList.add('title_input');
+            title.value = notes[i].title;
+            title.setAttribute('id', 'title_' + i);
+            note.appendChild(title);
+
+            var contentInput = document.createElement('textarea');
+            contentInput.classList.add('content');
+            contentInput.value = notes[i].content;
+            contentInput.setAttribute('id', 'content_' + i);
+
+            note.appendChild(contentInput);
+
+            var deleteBtn = document.createElement('button');
+            deleteBtn.classList.add('delete');
+            deleteBtn.setAttribute('id', 'delete_' + i);
+            deleteBtn.innerText = 'x';
+            note.appendChild(deleteBtn);
+
+            container.appendChild(note);
+
+            var edit = document.querySelectorAll('.content');
+            for (var j = 0; j < edit.length; j++){
+                edit[j].addEventListener('keyup', editNote);
+            }
+
+            //edit title event listener
+            var editT = document.querySelectorAll('.title_input');
+            for (var k = 0; k < editT.length; k++){
+                editT[k].addEventListener('keyup', editTitle);
+            }
+
+            // delete event listener
+            var deleteBtns = document.querySelectorAll('.delete')
+            for (var n = 0; n < deleteBtns.length; n++){
+                deleteBtns[n].addEventListener('click', deleteNote);
+            }
+        }
+    }
+}
 
 // render note onto container
 var renderNote = function(){
@@ -50,7 +118,6 @@ var renderNote = function(){
     for (var k = 0; k < editT.length; k++){
         editT[k].addEventListener('keyup', editTitle);
     }
-
 }
 
 // add note to 'database'
@@ -74,6 +141,7 @@ var editNote = function(event){
             notes[i].content = selectedNoteContent
         }
     }
+    saveNote();
 }
 
 // edit note title
@@ -85,6 +153,7 @@ var editTitle = function(event){
             notes[i].title = selectedNoteContent
         }
     }
+    saveNote();
 }
 
 // delete note
@@ -100,6 +169,11 @@ var deleteNote = function(){
         }
     }
     container.removeChild(parentNode);
+    saveNote();
+}
+
+var saveNote = function(){
+    localStorage.setItem('notes', JSON.stringify(notes));
 }
 
 // search
@@ -115,11 +189,12 @@ var search = function(){
             note.style.display = 'none'
         }
     }
-
 }
+
+
 
 // event listener for add button
 document.querySelector('.add').addEventListener('click', renderNote);
-//document.querySelector('.search_button').addEventListener('click', search);
 document.querySelector('.search_input').addEventListener('input', search);
 
+init();
