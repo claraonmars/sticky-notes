@@ -124,3 +124,81 @@ button{
 	display:inline-block;
 }
 
+@media only screen and (min-width:481px) and (max-width: 1024px){
+	.note{
+		width:35vw;
+		height:35vw;
+	}
+
+	.create, .add, .clear_cache{
+		width:35vw;
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.note{
+		width:80vw;
+		height:80vw;
+		display: block;
+		margin-left:10vw;
+		margin-right:10vw;
+	}
+
+	.content{
+		height:70vw;
+		width:75vw;
+	}
+
+	.title_input{
+		width:75vw;
+	}
+
+	.create{
+		width:100vw;
+		position: fixed;
+		bottom:0;
+		left:0;
+	}
+
+	.title_input, .content, .search{
+		display:block;
+	}
+
+	.clear_cache, .add{
+		width:80vw;
+		margin: 10px 10vw;
+	}
+
+	.title{
+		margin-left:10vw;
+		font-size:1.5rem;
+		display:block;
+	}
+
+	.navbar{
+		margin:10px 0;
+		position: fixed;
+		width:100vw;
+		height:20vw;
+	}
+
+	.search{
+		margin-left:10vw;
+		float:left;
+	}
+
+	.search_input{
+		border:1px solid black;
+		width:80vw;
+		padding:0;
+	}
+
+	.container{
+		position: relative;
+		margin-top:10px;
+		top:20vw;
+	}
+
+
+}
+
