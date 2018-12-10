@@ -18,18 +18,18 @@ Launch the app on https://clarakoh.com/sticky-notes/index.html
 
 or
 
-Clone this repo into your local directory
+* Clone this repo into your local directory
 
 ```
 git clone https://github.com/claraonmars/sticky-notes.git
 cd sticky-notes
 
 ```
-Open index.html in your broswer
+* Open index.html in your broswer
 
-If you are on Safari, ensure you check 'Disable Local File Restrictions' in 'Develop'.
+* If you are on Safari, ensure you check 'Disable Local File Restrictions' in 'Develop'.
 
-If you are on Chrome, ensure you uncheck 'Block third party cookies' in your preferences.
+* If you are on Chrome, ensure you uncheck 'Block third party cookies' in your preferences.
 
 ### Specification
 
