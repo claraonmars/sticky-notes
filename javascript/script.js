@@ -71,9 +71,9 @@ var renderExisting = function() {
     // delete all cache / local storage
     var clearCache = document.createElement('button');
     clearCache.classList.add('clear_cache');
-    clearCache.innerText = 'Delete all';
-    var create = document.querySelector('.create');
-    create.appendChild(clearCache);
+    clearCache.innerText = 'X';
+    var holder = document.querySelector('body');
+    holder.appendChild(clearCache);
     clearCache.addEventListener('click', deleteAll);
 }
 
