@@ -64,8 +64,12 @@ button{
 	font-size:1rem;
 }
 
-.container, .create, .title{
+.title{
 	display:inline-block;
+}
+
+.container{
+	display:inline;
 }
 
 .add{
@@ -108,6 +112,7 @@ button{
 .create{
 	vertical-align: top;
 	width:20vw;
+	display:inline-block;
 }
 
 .clear_cache{
