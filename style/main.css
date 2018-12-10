@@ -180,6 +180,7 @@ button{
 		position: fixed;
 		width:100vw;
 		height:20vw;
+		z-index:+99;
 	}
 
 	.search{
@@ -197,6 +198,7 @@ button{
 		position: relative;
 		margin-top:10px;
 		top:20vw;
+
 	}
 
 
