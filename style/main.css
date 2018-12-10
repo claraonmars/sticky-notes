@@ -1,3 +1,7 @@
+html, body{
+	margin:0;
+}
+
 .note{
 	width:20vw;
 	height:20vw;
@@ -9,11 +13,41 @@
 }
 
 .title_input{
+	position: relative;
 	background-color: #FFEC2C;
 	border:0;
+	width:18vw;
+	margin:1vw 1vw;
+	padding:0;
+	color:grey;
+	font-size: 1.2rem;
 }
 
 .content{
+	position: relative;
 	background-color: #FFEC2C;
 	border:0;
+	height:15vw;
+	width:18vw;
+	margin:5px 1vw;
+	padding:0;
+	resize: none;
+	color:grey;
+	font-size:1rem;
+}
+
+.container, .create, .title{
+	display:inline-block;
+}
+
+.delete{
+	background-color: rgba(0,0,0,0);
+	border:none;
+	position: absolute;
+	top:5px;
+	float:right;
+	right:10px;
+	font-size:20px;
+	font-weight: 400;
+	z-index:+2;
 }

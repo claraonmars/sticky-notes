@@ -1,31 +1,28 @@
-
 var notes
 var container = document.querySelector('.container');
 
 // check local storage
-var init = function(){
+var init = function() {
     if (typeof(Storage) !== "undefined") {
-        if(window.localStorage.getItem("notes") === null || window.localStorage.getItem("notes") === undefined){
-            var newArr =[];
+        if (window.localStorage.getItem("notes") === null || window.localStorage.getItem("notes") === undefined) {
+            var newArr = [];
             localStorage.setItem('notes', JSON.stringify(newArr));
             notes = JSON.parse(window.localStorage.getItem('notes'));
-        }
-        else{
+        } else {
             notes = JSON.parse(window.localStorage.getItem('notes'));
             renderExisting();
         }
-    }
-    else{
+    } else {
         alert('Your browser does not support local storage, your notes will not be saved!');
         notes = [];
     }
 }
 
 // append existing notes from local storage
-var renderExisting = function(){
+var renderExisting = function() {
     console.log(notes)
-    for (var i = 0; i< notes.length; i ++){
-        if (notes[i].title !== '' || notes[i].content !== ''){
+    for (var i = 0; i < notes.length; i++) {
+        if (notes[i].title !== '' || notes[i].content !== '') {
             var note = document.createElement("div");
             note.classList.add("note");
             note.setAttribute('id', 'note_' + i);
@@ -51,20 +48,21 @@ var renderExisting = function(){
 
             container.appendChild(note);
 
+            //edit note content event listener
             var edit = document.querySelectorAll('.content');
-            for (var j = 0; j < edit.length; j++){
+            for (var j = 0; j < edit.length; j++) {
                 edit[j].addEventListener('keyup', editNote);
             }
 
             //edit title event listener
             var editT = document.querySelectorAll('.title_input');
-            for (var k = 0; k < editT.length; k++){
+            for (var k = 0; k < editT.length; k++) {
                 editT[k].addEventListener('keyup', editTitle);
             }
 
             // delete event listener
             var deleteBtns = document.querySelectorAll('.delete')
-            for (var n = 0; n < deleteBtns.length; n++){
+            for (var n = 0; n < deleteBtns.length; n++) {
                 deleteBtns[n].addEventListener('click', deleteNote);
             }
         }
@@ -72,7 +70,7 @@ var renderExisting = function(){
 }
 
 // render note onto container
-var renderNote = function(){
+var renderNote = function() {
 
     var note = document.createElement("div");
     note.setAttribute('id', 'note_' + notes.length);
@@ -103,25 +101,25 @@ var renderNote = function(){
 
     // delete event listener
     var deleteBtns = document.querySelectorAll('.delete')
-    for (var i = 0; i < deleteBtns.length; i++){
+    for (var i = 0; i < deleteBtns.length; i++) {
         deleteBtns[i].addEventListener('click', deleteNote);
     }
 
-    // edit event listener
+    // edit content event listener
     var edit = document.querySelectorAll('.content');
-    for (var j = 0; j < edit.length; j++){
+    for (var j = 0; j < edit.length; j++) {
         edit[j].addEventListener('keyup', editNote);
     }
 
     //edit title event listener
     var editT = document.querySelectorAll('.title_input');
-    for (var k = 0; k < editT.length; k++){
+    for (var k = 0; k < editT.length; k++) {
         editT[k].addEventListener('keyup', editTitle);
     }
 }
 
 // add note to 'database'
-var addNote = function(){
+var addNote = function() {
     let title_input = document.querySelector(".title_input").value;
     let content = document.querySelector(".content").value;
     let note = {
@@ -133,11 +131,11 @@ var addNote = function(){
 }
 
 // edit note
-var editNote = function(event){
+var editNote = function(event) {
     var selectedNoteId = event.target.id.split('_');
     var selectedNoteContent = event.target.value
-    for (var i = 0; i<notes.length; i++){
-        if (notes[i].id === parseInt(selectedNoteId[1])){
+    for (var i = 0; i < notes.length; i++) {
+        if (notes[i].id === parseInt(selectedNoteId[1])) {
             notes[i].content = selectedNoteContent
         }
     }
@@ -145,11 +143,11 @@ var editNote = function(event){
 }
 
 // edit note title
-var editTitle = function(event){
+var editTitle = function(event) {
     var selectedNoteId = event.target.id.split('_');
     var selectedNoteContent = event.target.value
-    for (var i = 0; i<notes.length; i++){
-        if (notes[i].id === parseInt(selectedNoteId[1])){
+    for (var i = 0; i < notes.length; i++) {
+        if (notes[i].id === parseInt(selectedNoteId[1])) {
             notes[i].title = selectedNoteContent
         }
     }
@@ -157,13 +155,13 @@ var editTitle = function(event){
 }
 
 // delete note
-var deleteNote = function(){
+var deleteNote = function() {
     var selectedNoteId = event.target.id.split('_');
     var selectedNote = document.getElementById(event.target.id)
     var parentNode = event.target.parentNode;
 
-    for (var i = 0; i<notes.length; i++){
-        if (notes[i].id === parseInt(selectedNoteId[1])){
+    for (var i = 0; i < notes.length; i++) {
+        if (notes[i].id === parseInt(selectedNoteId[1])) {
             notes[i].content = ''
             notes[i].title = ''
         }
@@ -172,21 +170,27 @@ var deleteNote = function(){
     saveNote();
 }
 
-var saveNote = function(){
+// save note into database
+var saveNote = function() {
     localStorage.setItem('notes', JSON.stringify(notes));
 }
 
 // search
-var search = function(){
+var search = function() {
     var query = document.querySelector('.search_input').value;
 
-    for (var i = 0; i < notes.length; i++){
+    for (var i = 0; i < notes.length; i++) {
         var note = document.querySelector('#note_' + i);
-        if (notes[i].content.includes(query)|| notes[i].title.includes(query)){
-            note.style.display = 'block'
-        }
-        else{
-            note.style.display = 'none'
+
+        if (note !== null) {
+            if (notes[i].content.includes(query) || notes[i].title.includes(query)) {
+                note.style.display = 'block'
+            } else {
+                note.style.display = 'none'
+            }
+            if (query === '') {
+                note.style.display = 'inline-block'
+            }
         }
     }
 }
